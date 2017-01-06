@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-public abstract class AbastractControllerCrud <T, ID extends Serializable> extends AbstractService<T, ID> {
+public abstract class AbstractControllerCrud <T, ID extends Serializable> extends AbstractService<T, ID> {
 	
 	protected JpaRepository<T, ID> repository;
 	protected Class<T> clazz;
@@ -47,7 +47,7 @@ public abstract class AbastractControllerCrud <T, ID extends Serializable> exten
 			redirectAttributes.addFlashAttribute("error", getMsgActions()[1]);
 			e.printStackTrace();
 		}
-		return "redirect:" + getBaseURL() + "/new";
+		return "redirect:/" + getBaseURL() + "/new";
 	}
 	
 	
