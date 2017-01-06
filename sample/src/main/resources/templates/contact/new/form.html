@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+ 	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+</head>
+<body>
+
+	<div th:if="${sucesso != null}" class="alert alert-success" role="alert"><span th:text="${sucesso}">msg sucesso</span></div>
+	<div th:if="${error != null}" class="alert alert-danger" role="alert"><span th:text="${error}">msg error</span></div>
+
+	<h1>New</h1>
+	<hr />
+	<form th:action="@{/contacts/new}" th:method="post" th:object="${Contact}">
+		<input type="hidden" th:field="*{id}" />
+		<label for="mail">Mail</label> 
+		<input id="mail" name="mail" type="text" class="form-control" th:field="*{mail}" />
+		<label for="message">Password</label> 
+		<input id="message" name="message" type="text" class="form-control" th:field="*{message}" />
+		
+		<button type="submit" class="btn btn-success">Salvar</button>
+		<a href="/contacts/index" class="btn btn-default">Cancelar</a>
+	</form>
+</body>
+</html>
