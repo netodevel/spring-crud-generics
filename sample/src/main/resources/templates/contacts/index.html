@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+ 	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+     <script th:inline="javascript">
+  	  	/*<![CDATA[*/
+  	           $(function(){
+					$('#linkDelete').click(function() {
+						console.log("entrou aqui?");
+						var id = $("#linkDelete").attr("data-id");
+						console.log(id);
+						var url = "contacts/"+ id +"/delete";
+						console.log(url);
+						$("#formExcluir").attr("action", url);
+					});
+ 	           });
+		/*]]>*/
+	</script>
+</head>
+<body>
+
+	<div th:if="${sucesso != null}" class="alert alert-success" role="alert"><span th:text="${sucesso}">msg sucesso</span></div>
+	<div th:if="${error != null}" class="alert alert-danger" role="alert"><span th:text="${error}">msg error</span></div>
+
+	<h1>Contacts</h1>
+	<hr />
+	<a th:href="@{/contacts/new}">new</a><br/><br/>
+	<table>
+		<thead>
+			<tr>
+				<th>Mail</th>
+				<th>Message</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="contact : ${listContact}">
+				<td th:text="${contact.mail}"></td>
+				<td th:text="${contact.message}"></td>
+				<td class="col-md-1">
+					<a th:href="@{/contacts/{id}/update(id = ${contact.id})}">Editar</a>
+				</td>
+				<td class="col-md-1">
+					<a id="linkDelete" href="#" th:attr="data-id=${contact.id}">Excluir</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<form class="form-inline" id="formExcluir" th:method="delete">
+	</form>
+	
+</body>
+</html>

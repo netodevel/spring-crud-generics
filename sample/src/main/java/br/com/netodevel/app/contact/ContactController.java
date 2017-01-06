@@ -1,33 +1,24 @@
 package br.com.netodevel.app.contact;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.netodevel.generics.AbstractControllerCrud;
+import br.com.netodevel.generics.CrudService;
 
 @Controller
-@RequestMapping("/contacts")
+@RequestMapping(ContactController.BASE_URL)
 public class ContactController extends AbstractControllerCrud<Contact, Integer> {
 
+	static final String BASE_URL = "contacts";
+
 	@Autowired
-	private ContactRepository contactRepository;
+	private ContactService contactService;
 	
 	@Override
-	public JpaRepository<Contact, Integer> getRepository() {
-		return contactRepository;
-	}
-	
-	@Override
-	public String getPathHtmlFiles() {
-		return "contact";
-	}
-	
-	@Override
-	public String[] getMsgActions() {
-		String[] msgs = {"Contact save.", "Error"};
-		return msgs;
+	public CrudService<Contact, Integer> service() {
+		return contactService;
 	}
 	
 	@Override
@@ -37,7 +28,7 @@ public class ContactController extends AbstractControllerCrud<Contact, Integer> 
 	
 	@Override
 	public String getBaseURL() {
-		return "contacts";
+		return BASE_URL;
 	}
 	
 }
