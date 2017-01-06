@@ -16,5 +16,4 @@ public interface CrudService<E, idEntity extends Serializable> {
 	public void delete(E entity);
 	
 	public JpaRepository<E, idEntity> getRepository();
-	
 }
