@@ -1,3 +1,5 @@
+[![](https://jitpack.io/v/NetoDevel/spring-crud-generics.svg)](https://jitpack.io/#NetoDevel/spring-crud-generics)
+
 # spring-crud-generics
 
 create crud fast with spring crud generics..
@@ -74,4 +76,15 @@ public class ContactController extends AbstractControllerCrud<Contact, Integer> 
 	}
 }
 ```
+#Endpoints
+
+	BASE_URL /index GET
+	BASE_URL /new GET
+	BASE_URL /new POST
+	BASE_URL {id}/update GET
+	BASE_URL {id}/update PUT
+	BASE_URL {id}/delete DELETE
+	
+	
+
 
