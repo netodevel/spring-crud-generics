@@ -4,7 +4,7 @@
 
 create crud fast with spring crud generics..
 
-#Install
+# Install
 
 ```xml
 <repositories>
@@ -21,18 +21,18 @@ create crud fast with spring crud generics..
 ```
 
 
-#Usage
+# Usage
 
 Example Contact CRUD
 
-###Repository
+## Repository
 
 
 ```java
 public interface ContactRepository extends JpaRepository<Contact, Integer>{
 }
 ```
-###Service
+## Service
 
 ```java
 @Service
@@ -41,14 +41,14 @@ public class ContactService extends AbstractService<Contact, Integer>{
 
 	@Autowired
 	private ContactRepository contactRepository;
-	
+
 	@Override
 	public JpaRepository<Contact, Integer> getRepository() {
 		return contactRepository;
 	}
 }
 ```
-###Controller
+## Controller
 
 ```java
 @Controller
@@ -59,24 +59,24 @@ public class ContactController extends AbstractControllerCrud<Contact, Integer> 
 
 	@Autowired
 	private ContactService contactService;
-	
+
 	@Override
 	public CrudService<Contact, Integer> service() {
 		return contactService;
 	}
-	
+
 	@Override
 	public Class<Contact> getClazz() {
 		return Contact.class;
 	}
-	
+
 	@Override
 	public String getBaseURL() {
 		return BASE_URL;
 	}
 }
 ```
-#Endpoints
+# Endpoints
 
 	BASE_URL /index GET
 	BASE_URL /new GET
@@ -84,7 +84,3 @@ public class ContactController extends AbstractControllerCrud<Contact, Integer> 
 	BASE_URL {id}/update GET
 	BASE_URL {id}/update PUT
 	BASE_URL {id}/delete DELETE
-	
-	
-
-
